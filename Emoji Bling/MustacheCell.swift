@@ -36,7 +36,7 @@ class MustacheCell: UICollectionViewCell {
     }
     
     func configure() {
-        image.image = #imageLiteral(resourceName: "moustache")
+        image.image = #imageLiteral(resourceName: "moustache_0")
     }
     
     override func layoutSubviews() {
