@@ -17,6 +17,9 @@
 		94DB5FA921C4A0F1004F3D33 /* MustachePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB5FA821C4A0F1004F3D33 /* MustachePicker.swift */; };
 		94DB5FAB21C4A5AA004F3D33 /* MustacheCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB5FAA21C4A5AA004F3D33 /* MustacheCell.swift */; };
 		94DB5FAD21C4A99C004F3D33 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB5FAC21C4A99C004F3D33 /* Extensions.swift */; };
+		94DB5FAF21C4CADC004F3D33 /* Mouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB5FAE21C4CADC004F3D33 /* Mouth.swift */; };
+		94DB5FB221C4CDE9004F3D33 /* Fire.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 94DB5FB121C4CDE9004F3D33 /* Fire.scnp */; };
+		94DB5FB421C4CFF5004F3D33 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 94DB5FB321C4CFF5004F3D33 /* spark.png */; };
 		A88C274860CBA94A1E390125 /* Pods_MovembAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A276CA54FB80147DFB23A07 /* Pods_MovembAR.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +39,9 @@
 		94DB5FA821C4A0F1004F3D33 /* MustachePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MustachePicker.swift; sourceTree = "<group>"; };
 		94DB5FAA21C4A5AA004F3D33 /* MustacheCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MustacheCell.swift; sourceTree = "<group>"; };
 		94DB5FAC21C4A99C004F3D33 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		94DB5FAE21C4CADC004F3D33 /* Mouth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouth.swift; sourceTree = "<group>"; };
+		94DB5FB121C4CDE9004F3D33 /* Fire.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = Fire.scnp; sourceTree = "<group>"; };
+		94DB5FB321C4CFF5004F3D33 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 		6C45EA7521C38A1C002AB5B0 /* MovembAR */ = {
 			isa = PBXGroup;
 			children = (
+				94DB5FB021C4CDD4004F3D33 /* Fire */,
 				6C0CCE0421C38FD700B67CF5 /* SuperUsefulCode */,
 				6C45EA7621C38A1C002AB5B0 /* AppDelegate.swift */,
 				6C45EA7821C38A1C002AB5B0 /* EmojiBlingViewController.swift */,
@@ -98,8 +105,18 @@
 				94DB5FA821C4A0F1004F3D33 /* MustachePicker.swift */,
 				94DB5FAA21C4A5AA004F3D33 /* MustacheCell.swift */,
 				94DB5FAC21C4A99C004F3D33 /* Extensions.swift */,
+				94DB5FAE21C4CADC004F3D33 /* Mouth.swift */,
 			);
 			path = MovembAR;
+			sourceTree = "<group>";
+		};
+		94DB5FB021C4CDD4004F3D33 /* Fire */ = {
+			isa = PBXGroup;
+			children = (
+				94DB5FB321C4CFF5004F3D33 /* spark.png */,
+				94DB5FB121C4CDE9004F3D33 /* Fire.scnp */,
+			);
+			path = Fire;
 			sourceTree = "<group>";
 		};
 		CC5DADD9421EDEFBBA5A2CA8 /* Pods */ = {
@@ -171,7 +188,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94DB5FB421C4CFF5004F3D33 /* spark.png in Resources */,
 				6C45EA8121C38A1D002AB5B0 /* LaunchScreen.storyboard in Resources */,
+				94DB5FB221C4CDE9004F3D33 /* Fire.scnp in Resources */,
 				6C45EA7E21C38A1D002AB5B0 /* Assets.xcassets in Resources */,
 				6C45EA7C21C38A1C002AB5B0 /* Main.storyboard in Resources */,
 			);
@@ -234,6 +253,7 @@
 				6C0CCE0821C38FD700B67CF5 /* StringExtension.swift in Sources */,
 				94DB5FAB21C4A5AA004F3D33 /* MustacheCell.swift in Sources */,
 				94DB5FA921C4A0F1004F3D33 /* MustachePicker.swift in Sources */,
+				94DB5FAF21C4CADC004F3D33 /* Mouth.swift in Sources */,
 				6C45EA7921C38A1C002AB5B0 /* EmojiBlingViewController.swift in Sources */,
 				6C0CCE0721C38FD700B67CF5 /* EmojiNode.swift in Sources */,
 				6C45EA7721C38A1C002AB5B0 /* AppDelegate.swift in Sources */,
@@ -385,7 +405,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DWEEU446VX;
+				DEVELOPMENT_TEAM = 2KH6QA8ZL5;
 				INFOPLIST_FILE = "$(SRCROOT)/MovembAR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -404,7 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DWEEU446VX;
+				DEVELOPMENT_TEAM = 2KH6QA8ZL5;
 				INFOPLIST_FILE = "$(SRCROOT)/MovembAR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

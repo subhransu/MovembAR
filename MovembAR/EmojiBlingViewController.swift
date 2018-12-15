@@ -1,6 +1,7 @@
 import UIKit
 import ARKit
 import ARVideoKit
+import SceneKit
 
 class EmojiBlingViewController: UIViewController {
 
@@ -9,6 +10,10 @@ class EmojiBlingViewController: UIViewController {
     let noseOptions = ["-"]
     var recorder: RecordAR?
     let pickerHt : CGFloat = 150
+    private var mouth: Mouth?
+    private let faceQueue = DispatchQueue(label: "Burning.faceQueue")
+    private var isMouthBurning = false
+    private let fire = SCNParticleSystem(named: "Fire.scnp", inDirectory: nil)!
 
     // Recorder UIButton. This button will start and stop a video recording.
     lazy var recorderButton:UIButton = {
@@ -232,6 +237,16 @@ extension EmojiBlingViewController: ARSCNViewDelegate {
 
         return node
     }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        faceQueue.async {
+            self.mouth = Mouth()
+            node.addChildNode(self.mouth!)
+            self.mouth!.position.y = -0.06
+            self.mouth!.position.z = 0.07
+            self.fire.emitterShape = self.mouth?.geometry!
+        }
+    }
 
     // 1
     func renderer(
@@ -248,6 +263,26 @@ extension EmojiBlingViewController: ARSCNViewDelegate {
         // 3
         faceGeometry.update(from: faceAnchor.geometry)
         updateFeatures(for: node, using: faceAnchor)
+        mouthOpen(anchor: anchor)
+    }
+    
+    func mouthOpen(anchor: ARAnchor) {
+        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
+        if let mouth = self.mouth {
+            if let jawOpenAmount = faceAnchor.blendShapes[.jawOpen] {
+                if jawOpenAmount.floatValue > 0.4 {
+                    if !isMouthBurning {
+                        isMouthBurning = true
+                        print("burn!!!!")
+                        mouth.addParticleSystem(fire)
+                    }
+                    return
+                }
+            }
+            mouth.removeAllParticleSystems()
+            isMouthBurning = false
+            print("Stop!!!!")
+        }
     }
 }
 
