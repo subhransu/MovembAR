@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Emoji Bling
-//
-//  Created by Subhransu Behera on 14/12/18.
-//  Copyright © 2018 Subhransu Behera. All rights reserved.
-//
-
 import UIKit
 import ARKit
 
@@ -62,23 +54,6 @@ class EmojiBlingViewController: UIViewController {
         let frame = CGRect(x: x, y: y, width: wt, height: viewHt)
         picker = MustachePicker(frame: frame)
         self.view.addSubview(picker)
-    }
-
-    @IBAction func handleTap(_ sender: Any) {
-//        // 1
-//        let location = (sender as AnyObject).location(in: sceneView)
-//
-//        // 2
-//        let results = sceneView.hitTest(location, options: nil)
-//
-////        // 3
-////        if let result = results.first,
-////            let node = result.node as? EmojiNode {
-////
-////            // 4
-////            node.next()
-////        }
-
     }
 }
 
