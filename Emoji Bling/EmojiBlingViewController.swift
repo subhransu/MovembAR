@@ -12,16 +12,17 @@ import ARKit
 class EmojiBlingViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
+    var picker: MustachePicker!
     let noseOptions = ["-"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         guard ARFaceTrackingConfiguration.isSupported else {
             fatalError("Face tracking is not supported on this device")
         }
 
         sceneView.delegate = self
+        setupPicker()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +51,17 @@ class EmojiBlingViewController: UIViewController {
 
         // 3
         child?.updatePosition(for: vertices)
+    }
+    
+    func setupPicker() {
+        let viewHt : CGFloat = 150
+        let x: CGFloat = 0
+        let y: CGFloat = self.view.frame.maxY - viewHt
+        let wt: CGFloat = view.frame.width
+        
+        let frame = CGRect(x: x, y: y, width: wt, height: viewHt)
+        picker = MustachePicker(frame: frame)
+        self.view.addSubview(picker)
     }
 
     @IBAction func handleTap(_ sender: Any) {
