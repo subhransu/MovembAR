@@ -62,6 +62,8 @@ extension MustachePicker : UICollectionViewDelegate,UICollectionViewDelegateFlow
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MustacheCell
+        let mousName = "moustache_\(indexPath.row)"
+        cell.configure(withImage: mousName)
         return cell
     }
     

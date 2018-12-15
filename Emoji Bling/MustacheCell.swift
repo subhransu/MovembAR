@@ -20,7 +20,6 @@ class MustacheCell: UICollectionViewCell {
         super.init(frame: frame)
         setupView()
         setupImage()
-        configure()
     }
     
     func setupView() {
@@ -33,10 +32,11 @@ class MustacheCell: UICollectionViewCell {
         image.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         image.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
         image.widthAnchor.constraint(equalToConstant: frame.width).isActive = true
+        image.contentMode = .scaleAspectFit
     }
     
-    func configure() {
-        image.image = #imageLiteral(resourceName: "moustache_0")
+    func configure(withImage: String) {
+        image.image = UIImage(named: withImage) ??  #imageLiteral(resourceName: "moustache_0")
     }
     
     override func layoutSubviews() {
