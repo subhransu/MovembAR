@@ -46,7 +46,7 @@ class EmojiBlingViewController: UIViewController {
         let child = node.childNode(withName: "mustache", recursively: false) as? EmojiNode
 
         // 2
-        let vertices = [anchor.geometry.vertices[21]]
+        let vertices = [anchor.geometry.vertices[22]]
 
         // 3
         child?.updatePosition(for: vertices)
