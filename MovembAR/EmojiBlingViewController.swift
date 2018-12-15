@@ -14,6 +14,7 @@ class EmojiBlingViewController: UIViewController {
     private let faceQueue = DispatchQueue(label: "Burning.faceQueue")
     private var isMouthBurning = false
     private let fire = SCNParticleSystem(named: "Fire.scnp", inDirectory: nil)!
+    var currentSelection = 1
 
     // Recorder UIButton. This button will start and stop a video recording.
     lazy var recorderButton:UIButton = {
@@ -271,7 +272,7 @@ extension EmojiBlingViewController: ARSCNViewDelegate {
         if let mouth = self.mouth {
             if let jawOpenAmount = faceAnchor.blendShapes[.jawOpen] {
                 if jawOpenAmount.floatValue > 0.4 {
-                    if !isMouthBurning {
+                    if !isMouthBurning && currentSelection == 6{
                         isMouthBurning = true
                         print("burn!!!!")
                         mouth.addParticleSystem(fire)
@@ -281,7 +282,6 @@ extension EmojiBlingViewController: ARSCNViewDelegate {
             }
             mouth.removeAllParticleSystems()
             isMouthBurning = false
-            print("Stop!!!!")
         }
     }
 }
@@ -290,6 +290,7 @@ extension EmojiBlingViewController: ARSCNViewDelegate {
 extension EmojiBlingViewController : PickerDelegate {
     
     func didPickMustache(pos: Int) {
+        currentSelection = pos
         emojiNode?.update(with: pos)
     }
 }
