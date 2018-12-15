@@ -69,10 +69,10 @@ class EmojiBlingViewController: UIViewController {
         // Specifiy supported orientations
         recorder?.inputViewOrientations = [.portrait]
 
-        /*
-        recorderButton.addTarget(self, action: #selector(recorderButton(sender:)), for: .touchUpInside)
-        pauseButton.addTarget(self, action: #selector(pauseButton(sender:)), for: .touchUpInside)
-        gifButton.addTarget(self, action: #selector(gifAction(sender:)), for: .touchUpInside)*/
+
+        recorderButton.addTarget(self, action: #selector(recorderAction(sender:)), for: .touchUpInside)
+        pauseButton.addTarget(self, action: #selector(pauseAction(sender:)), for: .touchUpInside)
+        gifButton.addTarget(self, action: #selector(gifAction(sender:)), for: .touchUpInside)
     }
 
     override func viewWillAppear(_ animated: Bool) {
