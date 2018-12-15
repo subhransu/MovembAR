@@ -57,7 +57,7 @@
 		6C45EA6A21C38A1C002AB5B0 = {
 			isa = PBXGroup;
 			children = (
-				6C45EA7521C38A1C002AB5B0 /* Emoji Bling */,
+				6C45EA7521C38A1C002AB5B0 /* MovembAR */,
 				6C45EA7421C38A1C002AB5B0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,7 +70,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6C45EA7521C38A1C002AB5B0 /* Emoji Bling */ = {
+		6C45EA7521C38A1C002AB5B0 /* MovembAR */ = {
 			isa = PBXGroup;
 			children = (
 				6C0CCE0421C38FD700B67CF5 /* SuperUsefulCode */,
@@ -84,7 +84,7 @@
 				94DB5FAA21C4A5AA004F3D33 /* MustacheCell.swift */,
 				94DB5FAC21C4A99C004F3D33 /* Extensions.swift */,
 			);
-			path = "Emoji Bling";
+			path = MovembAR;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
