@@ -14,6 +14,9 @@
 		6C45EA7C21C38A1C002AB5B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C45EA7A21C38A1C002AB5B0 /* Main.storyboard */; };
 		6C45EA7E21C38A1D002AB5B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C45EA7D21C38A1D002AB5B0 /* Assets.xcassets */; };
 		6C45EA8121C38A1D002AB5B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C45EA7F21C38A1D002AB5B0 /* LaunchScreen.storyboard */; };
+		94DB5FA921C4A0F1004F3D33 /* MustachePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB5FA821C4A0F1004F3D33 /* MustachePicker.swift */; };
+		94DB5FAB21C4A5AA004F3D33 /* MustacheCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB5FAA21C4A5AA004F3D33 /* MustacheCell.swift */; };
+		94DB5FAD21C4A99C004F3D33 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB5FAC21C4A99C004F3D33 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		6C45EA7D21C38A1D002AB5B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C45EA8021C38A1D002AB5B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C45EA8221C38A1D002AB5B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94DB5FA821C4A0F1004F3D33 /* MustachePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MustachePicker.swift; sourceTree = "<group>"; };
+		94DB5FAA21C4A5AA004F3D33 /* MustacheCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MustacheCell.swift; sourceTree = "<group>"; };
+		94DB5FAC21C4A99C004F3D33 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,9 @@
 				6C45EA7D21C38A1D002AB5B0 /* Assets.xcassets */,
 				6C45EA7F21C38A1D002AB5B0 /* LaunchScreen.storyboard */,
 				6C45EA8221C38A1D002AB5B0 /* Info.plist */,
+				94DB5FA821C4A0F1004F3D33 /* MustachePicker.swift */,
+				94DB5FAA21C4A5AA004F3D33 /* MustacheCell.swift */,
+				94DB5FAC21C4A99C004F3D33 /* Extensions.swift */,
 			);
 			path = "Emoji Bling";
 			sourceTree = "<group>";
@@ -150,9 +159,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C0CCE0821C38FD700B67CF5 /* StringExtension.swift in Sources */,
+				94DB5FAB21C4A5AA004F3D33 /* MustacheCell.swift in Sources */,
+				94DB5FA921C4A0F1004F3D33 /* MustachePicker.swift in Sources */,
 				6C45EA7921C38A1C002AB5B0 /* EmojiBlingViewController.swift in Sources */,
 				6C0CCE0721C38FD700B67CF5 /* EmojiNode.swift in Sources */,
 				6C45EA7721C38A1C002AB5B0 /* AppDelegate.swift in Sources */,
+				94DB5FAD21C4A99C004F3D33 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +311,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DWEEU446VX;
+				DEVELOPMENT_TEAM = 2KH6QA8ZL5;
 				INFOPLIST_FILE = "Emoji Bling/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -317,7 +329,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DWEEU446VX;
+				DEVELOPMENT_TEAM = 2KH6QA8ZL5;
 				INFOPLIST_FILE = "Emoji Bling/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
