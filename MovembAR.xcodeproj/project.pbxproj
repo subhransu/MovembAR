@@ -312,7 +312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2KH6QA8ZL5;
-				INFOPLIST_FILE = "Emoji Bling/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MovembAR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,7 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2KH6QA8ZL5;
-				INFOPLIST_FILE = "Emoji Bling/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MovembAR/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
