@@ -1,0 +1,22 @@
+PODS:
+  - ARVideoKit (1.3)
+
+DEPENDENCIES:
+  - ARVideoKit (from `https://github.com/AFathi/ARVideoKit.git`, branch `swift_4_2`)
+
+EXTERNAL SOURCES:
+  ARVideoKit:
+    :branch: swift_4_2
+    :git: https://github.com/AFathi/ARVideoKit.git
+
+CHECKOUT OPTIONS:
+  ARVideoKit:
+    :commit: 2015b4db0e58398f31f270aaafeb2fd9a01eb87f
+    :git: https://github.com/AFathi/ARVideoKit.git
+
+SPEC CHECKSUMS:
+  ARVideoKit: 9bd6fd31662b8b4c3966797e0f596f4d87948475
+
+PODFILE CHECKSUM: 3027bd5b28d51e0cff20c1169e4a158bb84d5807
+
+COCOAPODS: 1.5.3

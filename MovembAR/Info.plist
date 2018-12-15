@@ -25,7 +25,13 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSCameraUsageDescription</key>
-	<string>EmojiBling needs access to your camera in order to track your face.</string>
+	<string>AR Camera</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Export AR Media</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Export AR Media</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Audiovisual Recording</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -40,8 +46,6 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>

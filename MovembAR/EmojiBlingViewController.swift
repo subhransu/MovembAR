@@ -1,11 +1,52 @@
 import UIKit
 import ARKit
+import ARVideoKit
 
 class EmojiBlingViewController: UIViewController {
 
     @IBOutlet var sceneView: ARSCNView!
     var picker: MustachePicker!
     let noseOptions = ["-"]
+    var recorder: RecordAR?
+
+    // Recorder UIButton. This button will start and stop a video recording.
+    var recorderButton:UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Record", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.backgroundColor = .white
+        btn.frame = CGRect(x: 0, y: 0, width: 110, height: 60)
+        btn.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height*0.90)
+        btn.layer.cornerRadius = btn.bounds.height/2
+        btn.tag = 0
+        return btn
+    }()
+
+    // Pause UIButton. This button will pause a video recording.
+    var pauseButton:UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Pause", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.backgroundColor = .white
+        btn.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        btn.center = CGPoint(x: UIScreen.main.bounds.width*0.15, y: UIScreen.main.bounds.height*0.90)
+        btn.layer.cornerRadius = btn.bounds.height/2
+        btn.alpha = 0.3
+        btn.isEnabled = false
+        return btn
+    }()
+
+    // GIF UIButton. This button will capture a GIF image.
+    var gifButton:UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("GIF", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.backgroundColor = .white
+        btn.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        btn.center = CGPoint(x: UIScreen.main.bounds.width*0.85, y: UIScreen.main.bounds.height*0.90)
+        btn.layer.cornerRadius = btn.bounds.height/2
+        return btn
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +56,21 @@ class EmojiBlingViewController: UIViewController {
 
         sceneView.delegate = self
         setupPicker()
+
+        self.view.addSubview(recorderButton)
+        self.view.addSubview(pauseButton)
+        self.view.addSubview(gifButton)
+
+        // Initialize with SpriteKit scene
+        recorder = RecordAR(ARSceneKit: sceneView)
+
+        // Specifiy supported orientations
+        recorder?.inputViewOrientations = [.portrait]
+
+        /*
+        recorderButton.addTarget(self, action: #selector(recorderButton(sender:)), for: .touchUpInside)
+        pauseButton.addTarget(self, action: #selector(pauseButton(sender:)), for: .touchUpInside)
+        gifButton.addTarget(self, action: #selector(gifAction(sender:)), for: .touchUpInside)*/
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +81,7 @@ class EmojiBlingViewController: UIViewController {
 
         // 2
         sceneView.session.run(configuration)
+        recorder?.prepare(configuration)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -32,6 +89,7 @@ class EmojiBlingViewController: UIViewController {
 
         // 1
         sceneView.session.pause()
+        recorder?.rest()
     }
 
     func updateFeatures(for node: SCNNode, using anchor: ARFaceAnchor) {
@@ -54,6 +112,78 @@ class EmojiBlingViewController: UIViewController {
         let frame = CGRect(x: x, y: y, width: wt, height: viewHt)
         picker = MustachePicker(frame: frame)
         self.view.addSubview(picker)
+    }
+
+    @objc func recorderAction(sender:UIButton) {
+
+        if recorder?.status == .readyToRecord {
+            // Start recording
+            recorder?.record()
+
+            // Change button title
+            sender.setTitle("Stop", for: .normal)
+            sender.setTitleColor(.red, for: .normal)
+
+            // Enable Pause button
+            pauseButton.alpha = 1
+            pauseButton.isEnabled = true
+
+            // Disable GIF button
+            gifButton.alpha = 0.3
+            gifButton.isEnabled = false
+        }else if recorder?.status == .recording || recorder?.status == .paused {
+            // Stop recording and export video to camera roll
+            recorder?.stopAndExport()
+
+            // Change button title
+            sender.setTitle("Record", for: .normal)
+            sender.setTitleColor(.black, for: .normal)
+
+            // Enable GIF button
+            gifButton.alpha = 1
+            gifButton.isEnabled = true
+
+            // Disable Pause button
+            pauseButton.alpha = 0.3
+            pauseButton.isEnabled = false
+        }
+
+    }
+
+    @objc func pauseAction(sender:UIButton) {
+        if recorder?.status == .recording {
+            // Pause recording
+            recorder?.pause()
+
+            // Change button title
+            sender.setTitle("Resume", for: .normal)
+            sender.setTitleColor(.blue, for: .normal)
+        } else if recorder?.status == .paused {
+            // Resume recording
+            recorder?.record()
+
+            // Change button title
+            sender.setTitle("Pause", for: .normal)
+            sender.setTitleColor(.black, for: .normal)
+        }
+    }
+
+    @objc func gifAction(sender:UIButton) {
+        self.gifButton.isEnabled = false
+        self.gifButton.alpha = 0.3
+        self.recorderButton.isEnabled = false
+        self.recorderButton.alpha = 0.3
+
+        recorder?.gif(forDuration: 1.5, export: true) { _, _, _ , exported in
+            if exported {
+                DispatchQueue.main.sync {
+                    self.gifButton.isEnabled = true
+                    self.gifButton.alpha = 1.0
+                    self.recorderButton.isEnabled = true
+                    self.recorderButton.alpha = 1.0
+                }
+            }
+        }
     }
 }
 
@@ -112,4 +242,5 @@ extension EmojiBlingViewController: ARSCNViewDelegate {
         updateFeatures(for: node, using: faceAnchor)
     }
 }
+
 

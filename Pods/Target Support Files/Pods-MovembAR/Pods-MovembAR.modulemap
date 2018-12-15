@@ -1,0 +1,6 @@
+framework module Pods_MovembAR {
+  umbrella header "Pods-MovembAR-umbrella.h"
+
+  export *
+  module * { export * }
+}
