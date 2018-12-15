@@ -41,7 +41,7 @@ class EmojiNode: SCNNode {
     super.init()
     
     let plane = SCNPlane(width: width, height: height)
-    plane.firstMaterial?.diffuse.contents = UIImage(named: "moustache")
+    plane.firstMaterial?.diffuse.contents = UIImage(named: "moustache_0")
     plane.firstMaterial?.isDoubleSided = true
     
     geometry = plane
@@ -65,7 +65,7 @@ extension EmojiNode {
     index = (index + 1) % options.count
     
     if let plane = geometry as? SCNPlane {
-        plane.firstMaterial?.diffuse.contents = UIImage(named: "moustache")
+        plane.firstMaterial?.diffuse.contents = UIImage(named: "moustache_0")
         plane.firstMaterial?.isDoubleSided = true
     }
   }
