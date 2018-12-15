@@ -48,6 +48,8 @@ class EmojiBlingViewController: UIViewController {
         return btn
     }()
 
+    var emojiNode: EmojiNode?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         guard ARFaceTrackingConfiguration.isSupported else {
@@ -112,6 +114,7 @@ class EmojiBlingViewController: UIViewController {
         let frame = CGRect(x: x, y: y, width: wt, height: viewHt)
         picker = MustachePicker(frame: frame)
         self.view.addSubview(picker)
+        picker.delegate = self
     }
 
     @objc func recorderAction(sender:UIButton) {
@@ -207,13 +210,15 @@ extension EmojiBlingViewController: ARSCNViewDelegate {
         node.geometry?.firstMaterial?.transparency = 0.0
 
         // 2
-        let noseNode = EmojiNode(with: noseOptions)
+//        let noseNode = EmojiNode(with: noseOptions)
+        emojiNode = EmojiNode(with: noseOptions)
+        
 
         // 3
-        noseNode.name = "mustache"
+        emojiNode?.name = "mustache"
 
         // 4
-        node.addChildNode(noseNode)
+        node.addChildNode(emojiNode!)
 
         guard let faceAnchor = anchor as? ARFaceAnchor else {
                 return nil
@@ -244,3 +249,9 @@ extension EmojiBlingViewController: ARSCNViewDelegate {
 }
 
 
+extension EmojiBlingViewController : PickerDelegate {
+    
+    func didPickMustache(pos: Int) {
+        emojiNode?.update(with: pos)
+    }
+}

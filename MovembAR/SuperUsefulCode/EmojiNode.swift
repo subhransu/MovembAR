@@ -35,13 +35,13 @@ class EmojiNode: SCNNode {
   var options: [String]
   var index = 0
   
-  init(with options: [String], width: CGFloat = 0.13, height: CGFloat = 0.12) {
+  init(with options: [String], width: CGFloat = 0.1, height: CGFloat = 0.04) {
     self.options = options
     
     super.init()
     
     let plane = SCNPlane(width: width, height: height)
-    plane.firstMaterial?.diffuse.contents = UIImage(named: "beard")
+    plane.firstMaterial?.diffuse.contents = UIImage(named: "moustache_3")
     plane.firstMaterial?.isDoubleSided = true
     
     geometry = plane
@@ -59,14 +59,36 @@ extension EmojiNode {
   func updatePosition(for vectors: [vector_float3]) {
     let newPos = vectors.reduce(vector_float3(), +) / Float(vectors.count)
     position = SCNVector3(newPos)
-  }
-  
-  func next() {
-    index = (index + 1) % options.count
-    
-    if let plane = geometry as? SCNPlane {
-        plane.firstMaterial?.diffuse.contents = UIImage(named: "beard")
-        plane.firstMaterial?.isDoubleSided = true
     }
-  }
+    
+    func next() {
+        index = (index + 1) % options.count
+        
+        if let plane = geometry as? SCNPlane {
+            plane.firstMaterial?.diffuse.contents = UIImage(named: "moustache_3")
+            plane.firstMaterial?.isDoubleSided = true
+        }
+    }
+    
+    func update(with pos: Int) {
+        let item = pos + 1
+        let name = "moustache_\(item)"
+        
+        guard  let plane = geometry as? SCNPlane  else {
+            return
+        }
+        if item > 6 && item < 11 {
+            // Large mustache
+            //Width: 0.3 ..... Height 0.1
+            plane.width = 0.4
+            plane.height = 0.1
+        } else {
+            plane.width = 0.1
+            plane.height = 0.04
+        }
+        
+        plane.firstMaterial?.diffuse.contents = UIImage(named: name)
+        plane.firstMaterial?.isDoubleSided = true
+        
+    }
 }
