@@ -41,7 +41,7 @@ class EmojiNode: SCNNode {
     super.init()
     
     let plane = SCNPlane(width: width, height: height)
-    plane.firstMaterial?.diffuse.contents = UIImage(named: "moustache_3")
+    plane.firstMaterial?.diffuse.contents = UIImage(named: "moustache_2")
     plane.firstMaterial?.isDoubleSided = true
     
     geometry = plane
@@ -80,8 +80,11 @@ extension EmojiNode {
         if item > 6 && item < 11 {
             // Large mustache
             //Width: 0.3 ..... Height 0.1
-            plane.width = 0.4
+            plane.width = 0.35
             plane.height = 0.1
+        } else if item == 11 {
+            plane.width = 0.13
+            plane.height = 0.12
         } else {
             plane.width = 0.1
             plane.height = 0.04

@@ -8,28 +8,31 @@ class EmojiBlingViewController: UIViewController {
     var picker: MustachePicker!
     let noseOptions = ["-"]
     var recorder: RecordAR?
+    let pickerHt : CGFloat = 150
 
     // Recorder UIButton. This button will start and stop a video recording.
-    var recorderButton:UIButton = {
+    lazy var recorderButton:UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("Record", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = .white
         btn.frame = CGRect(x: 0, y: 0, width: 110, height: 60)
-        btn.center = CGPoint(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height*0.90)
+        let y: CGFloat = view.frame.maxY - (pickerHt + 32)
+        btn.center = CGPoint(x: UIScreen.main.bounds.width/2, y: y)
         btn.layer.cornerRadius = btn.bounds.height/2
         btn.tag = 0
         return btn
     }()
 
     // Pause UIButton. This button will pause a video recording.
-    var pauseButton:UIButton = {
+    lazy var pauseButton:UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("Pause", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = .white
         btn.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-        btn.center = CGPoint(x: UIScreen.main.bounds.width*0.15, y: UIScreen.main.bounds.height*0.90)
+        let y: CGFloat = view.frame.maxY - (pickerHt + 32)
+        btn.center = CGPoint(x: UIScreen.main.bounds.width*0.15, y: y)
         btn.layer.cornerRadius = btn.bounds.height/2
         btn.alpha = 0.3
         btn.isEnabled = false
@@ -37,13 +40,14 @@ class EmojiBlingViewController: UIViewController {
     }()
 
     // GIF UIButton. This button will capture a GIF image.
-    var gifButton:UIButton = {
+    lazy var gifButton:UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("GIF", for: .normal)
         btn.setTitleColor(.black, for: .normal)
         btn.backgroundColor = .white
         btn.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-        btn.center = CGPoint(x: UIScreen.main.bounds.width*0.85, y: UIScreen.main.bounds.height*0.90)
+        let y: CGFloat = view.frame.maxY - (pickerHt + 32)
+        btn.center = CGPoint(x: UIScreen.main.bounds.width*0.85, y: y)
         btn.layer.cornerRadius = btn.bounds.height/2
         return btn
     }()
@@ -106,12 +110,11 @@ class EmojiBlingViewController: UIViewController {
     }
     
     func setupPicker() {
-        let viewHt : CGFloat = 150
         let x: CGFloat = 0
-        let y: CGFloat = self.view.frame.maxY - viewHt
+        let y: CGFloat = self.view.frame.maxY - pickerHt
         let wt: CGFloat = view.frame.width
         
-        let frame = CGRect(x: x, y: y, width: wt, height: viewHt)
+        let frame = CGRect(x: x, y: y, width: wt, height: pickerHt)
         picker = MustachePicker(frame: frame)
         self.view.addSubview(picker)
         picker.delegate = self
