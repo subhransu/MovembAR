@@ -22,6 +22,7 @@ class MustachePicker: UIView {
     // Constants
     let cellId = "cellId"
     let cellHt: CGFloat = 80
+    weak var delegate: PickerDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,13 +63,14 @@ extension MustachePicker : UICollectionViewDelegate,UICollectionViewDelegateFlow
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MustacheCell
-        let mousName = "moustache_\(indexPath.row)"
+        let mousName = "moustache_\(indexPath.row + 1)"
         cell.configure(withImage: mousName)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected \(indexPath.row)")
+        delegate?.didPickMustache(pos: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -80,5 +82,9 @@ extension MustachePicker : UICollectionViewDelegate,UICollectionViewDelegateFlow
         return 8
     }
     
+}
+
+protocol PickerDelegate: NSObjectProtocol {
+    func didPickMustache(pos: Int)
 }
 
